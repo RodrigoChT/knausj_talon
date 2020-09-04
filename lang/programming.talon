@@ -1,9 +1,11 @@
 tag: user.code_generic
 -
+block: user.code_block()
+
 #todo should we have a keyword list? type list capture? stick with "word"?
 #state in: insert(" in ")
-is not none: user.code_is_not_null() 
-is none: user.code_is_null()
+is not (none|null): user.code_is_not_null()
+is (none|null): user.code_is_null()
 #todo: types?
 #word (dickt | dictionary): user.code_type_dictionary()
 state if: user.code_state_if()
@@ -12,7 +14,7 @@ state else: user.code_state_else()
 state self: user.code_self()
 #todo: this is valid for many languages,
 # but probably not all
-self dot: 
+self dot:
     user.code_self()
     insert(".")
 state while: user.code_state_while()
@@ -31,7 +33,13 @@ state include system: user.code_include_system()
 state include local: user.code_include_local()
 state type deaf: user.code_type_definition()
 state type deaf struct: user.code_typedef_struct()
-state (no | nil): user.code_null()
+state (no | nil | null): user.code_null()
+state break: user.code_break()
+state next: user.code_next()
+state true: user.code_true()
+state false: user.code_false()
+state na: user.code_na()
+
 ^funky <user.text>$:
     #todo: once .talon action definitions can take parameters, combine these functions
     user.code_private_function()
@@ -50,7 +58,7 @@ state (no | nil): user.code_null()
 ^pub funky <user.text>$:
     #todo: once .talon action definitions can take parameters, combine these functions
     user.code_public_function()
-    user.code_public_function_formatter(user.text)	
+    user.code_public_function_formatter(user.text)
     sleep(50ms)
     insert("()")
 ^static funky <user.text>$:
@@ -66,23 +74,29 @@ state (no | nil): user.code_null()
 	user.code_public_static_function()
     user.code_public_function_formatter(user.text)
 
-# show and print functions
+# show and print functions and libraries
 toggle funk: user.code_toggle_functions()
-funk <user.code_functions>: 
+toggle library: user.code_toggle_libraries()
+funk <user.code_functions>:
     old_clip = clip.text()
     user.code_insert_function(code_functions, "")
     clip.set_text(old_clip)
-funk cell <number>: 
+library <user.code_libraries>:
+    insert("library()")
+    key(left)
+    user.code_insert_library(code_libraries, "")
+    key(end enter)
+funk cell <number>:
     old_clip = clip.text()
     user.code_select_function(number - 1, "")
     clip.set_text(old_clip)
-funk wrap <user.code_functions>: 
+funk wrap <user.code_functions>:
     old_clip = clip.text()
     edit.copy()
     sleep(100ms)
     user.code_insert_function(code_functions, clip.text())
     clip.set_text(old_clip)
-funk wrap <number>: 
+funk wrap <number>:
     old_clip = clip.text()
     edit.copy()
     sleep(100ms)

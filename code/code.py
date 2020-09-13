@@ -1,8 +1,7 @@
 import os
 import re
 
-from talon import (Context, Module, actions, app, fs, imgui, registry,
-                   settings, ui)
+from talon import Context, Module, actions, app, fs, imgui, registry, settings, ui
 
 ctx = Context()
 mod = Module()
@@ -55,7 +54,7 @@ extension_lang_map = {
     "vim": "vim",
     "js": "javascript",
     "ts": "typescript",
-    "r": "r"
+    "r": "r",
 }
 
 # flag indicates whether or not the title tracking is enabled
@@ -295,31 +294,26 @@ class Actions:
 
     def code_false():
         """Insert False value"""
-
-    def code_na():
-        """Insert NA value"""
-
+        
     def code_try_catch():
         """Inserts try/catch. If selection is true, does so around the selecion"""
 
-    def code_private_function():
-        """Inserts private function declaration w/o name"""
-        # todo: once .talon action definitiones can take parameters, combine with code_private_function_formatter
-        # same for all the rest
+    def code_private_function(text: str):
+        """Inserts private function declaration"""
 
-    def code_private_static_function():
+    def code_private_static_function(text: str):
         """Inserts private static function"""
 
-    def code_protected_function():
-        """Inserts protected function declaration w/o name"""
+    def code_protected_function(text: str):
+        """Inserts protected function declaration"""
 
-    def code_protected_static_function():
+    def code_protected_static_function(text: str):
         """Inserts public function"""
 
-    def code_public_function():
+    def code_public_function(text: str):
         """Inserts public function"""
 
-    def code_public_static_function():
+    def code_public_static_function(text: str):
         """Inserts public function"""
 
     def code_private_function_formatter(name: str):
@@ -496,9 +490,24 @@ def gui_libraries(gui: imgui.GUI):
             )
         )
 
+@imgui.open(software=False)
+def gui_libraries(gui: imgui.GUI):
+    gui.text("Libraries")
+    gui.line()
+
+    for i, entry in enumerate(library_list, 1):
+        gui.text(
+            "{}. {}: {}".format(
+                i, entry, registry.lists["user.code_libraries"][0][entry]
+            )
+        )
+
+
 def commands_updated(_):
     if gui_functions.showing:
         update_function_list_and_freeze()
+    if gui_libraries.showing:
+        update_library_list_and_freeze()
 
 
 registry.register("update_commands", commands_updated)

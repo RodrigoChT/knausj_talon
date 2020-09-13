@@ -1,4 +1,5 @@
-from talon import Module, Context, actions, ui, imgui, clip
+from talon import Module, Context, actions, ui, imgui, clip, settings
+
 
 ctx = Context()
 
@@ -60,7 +61,6 @@ ctx.lists["user.code_functions"] = {
     "mutate": "mutate",
     "names": "names",
     "nest": "nest",
-    "paste": "paste0",
     "print": "print",
     "read CSV": "read_csv",
     "read E views": "readEViews",
@@ -99,6 +99,27 @@ ctx.lists["user.code_functions"] = {
     "write CSV": "write_csv",
     "ex table": "xtable",
     "un nest": "unnest",
+    # Shiny
+    "shine ui": "shinyUI",
+    "title panel": "titlePanel",
+    "main panel": "mainPanel",
+    "tab panel": "tabPanel",
+    "navigation list panel": "navlistPanel",
+    "conditional panel": "conditionalPanel",
+    "input panel": "inputPanel",
+    "ui output": "uiOutput",
+    "text output": "textOutput",
+    "table output": "tableOutput",
+    "data table output": "dataTableOutput",
+    "select size input": "selectizeInput",
+    "action button": "actionButton",
+    "download button": "downloadButton",
+    "render ui": "renderUI",
+    "observe event": "observeEvent",
+    # Base
+    "paste": "paste0",
+    "sort": "sort",
+
 }
 
 ctx.lists["user.code_libraries"] = {
@@ -119,14 +140,34 @@ ctx.lists["user.code_libraries"] = {
     "tidy verse": "tidyverse",
     "vee table": "vtable",
     "viridis": "viridis",
+    "shiny alert": "shinyalert",
 }
 
 @ctx.action_class("user")
 class user_actions:
     def code_insert_function(text: str, selection: str):
-        actions.clip.set_text(text + "({})".format(selection))
-        actions.edit.paste()
+        if selection:
+            text = text + "({})".format(selection)
+        else:
+            text = text + "()"
+        actions.user.paste(text)
         actions.edit.left()
+
+    def code_private_function(text: str):
+        result = "{} <- function () {{\n\n}}".format(
+            actions.user.formatted_text(
+                text, settings.get("user.code_private_function_formatter")
+            )
+        )
+
+        actions.user.paste(result)
+        actions.edit.up()
+        actions.edit.up()
+        actions.edit.line_end()
+        actions.edit.left()
+        actions.edit.left()
+        actions.edit.left()
+
     def code_insert_library(text: str, selection: str):
         actions.clip.set_text(text + "{}".format(selection))
         actions.edit.paste()

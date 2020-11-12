@@ -67,4 +67,4 @@ chain:
     key(enter)
 state na:
     insert("NA")
-^funky <user.text>$: user.code_private_function(text)
+^function <user.text>$: user.code_private_function(text)

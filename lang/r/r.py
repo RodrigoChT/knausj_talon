@@ -62,7 +62,6 @@ ctx.lists["user.code_functions"] = {
     "names": "names",
     "nest": "nest",
     "print": "print",
-    "read CSV": "read_csv",
     "read E views": "readEViews",
     "read excel": "read_xlsx",
     "read RDS": "read_rds",
@@ -101,6 +100,8 @@ ctx.lists["user.code_functions"] = {
     "un nest": "unnest",
     # Shiny
     "shine ui": "shinyUI",
+    "fluid row": "fluidRow",
+    "side bar layout": "sidebarLayout",
     "title panel": "titlePanel",
     "main panel": "mainPanel",
     "tab panel": "tabPanel",
@@ -119,6 +120,11 @@ ctx.lists["user.code_functions"] = {
     # Base
     "paste": "paste0",
     "sort": "sort",
+    # Utils
+    "read CSV": "read.csv",
+    # data.table
+    "as data table": "as.data.table"
+
 
 }
 
@@ -141,6 +147,7 @@ ctx.lists["user.code_libraries"] = {
     "vee table": "vtable",
     "viridis": "viridis",
     "shiny alert": "shinyalert",
+    "data table": "data.table"
 }
 
 @ctx.action_class("user")

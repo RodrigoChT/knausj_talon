@@ -1,3 +1,4 @@
+# copy and pasting
 copy line:
     edit.line_start()
     edit.extend_line_end()
@@ -8,25 +9,18 @@ cut line:
     edit.extend_line_end()
     edit.cut()
 
+# deleting
 boom line:
     edit.delete_line()
     key(shift-up shift-end)
     edit.delete()
-
-go less right:
-    edit.line_end()
-    edit.left()
 
 clear this:
     edit.word_right()
     edit.extend_word_left()
     edit.delete()
 
-fate <user.text>:
-    key(ctrl-f)
-    insert(user.text)
-    key(enter)
-
+# move cursor
 go south:
     edit.down()
     edit.line_start()
@@ -34,3 +28,42 @@ go south:
 go north:
     edit.up()
     edit.line_end()
+
+go less right:
+    edit.line_end()
+    edit.left()
+
+# Select
+jump <number_small>:
+  edit.line_end()
+  edit.extend_line_up()
+  repeat(number_small - 1)
+  edit.extend_line_start()
+
+crouch <number_small>:
+  edit.line_start()
+  edit.extend_line_down()
+  repeat(number_small - 1)
+  edit.extend_line_end()
+
+# move text
+move down:
+    edit.line_start()
+    key(enter)
+
+# misc
+fate <user.text>:
+    key(ctrl-f)
+    insert(user.text)
+    key(enter)
+
+# specific comma entries
+trash:
+    ','
+    key(enter)
+
+llama:
+    edit.line_end()
+    key(left)
+    ','
+    key(enter)

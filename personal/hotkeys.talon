@@ -10,3 +10,4 @@ key(ctrl-home):
     mode.enable("command")
 key(ctrl-f20): user.history_enable()
 key(ctrl-del): user.history_disable()
+key(ctrl-alt-m): user.mouse_toggle_zoom_mouse()

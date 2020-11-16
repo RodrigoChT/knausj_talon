@@ -1,6 +1,5 @@
 from talon import Context, Module, actions, clip, imgui, settings, ui
 
-
 ctx = Context()
 
 ctx.matches = r"""
@@ -140,13 +139,13 @@ ctx.lists["user.code_functions"] = {
     "un nest": "unnest",
     # readr, readxl, and other non-base R reading/writing
     "read E views": "readEViews",
+    "read CSV": "read_csv",
+    "read RDS": "read_rds",
     "read excel": "read_xlsx",
     "write CSV": "write_csv",
     "write RDS": "write_rds",
     # Shiny
     "shine ui": "shinyUI",
-    "fluid row": "fluidRow",
-    "side bar layout": "sidebarLayout",
     "title panel": "titlePanel",
     "main panel": "mainPanel",
     "tab panel": "tabPanel",
@@ -163,12 +162,6 @@ ctx.lists["user.code_functions"] = {
     "render ui": "renderUI",
     "observe event": "observeEvent",
     # Base
-    "paste": "paste0",
-    "sort": "sort",
-    # Utils
-    "read CSV": "read.csv",
-    # data.table
-    "as data table": "as.data.table"
 }
 
 ctx.lists["user.code_libraries"] = {
@@ -212,7 +205,6 @@ ctx.lists["user.code_libraries"] = {
     "viridis": "viridis",
     "viridis light": "viridisLite",
     "shiny alert": "shinyalert",
-    "data table": "data.table"
 }
 
 

@@ -1,14 +1,3 @@
-# copy and pasting
-copy line:
-    edit.line_start()
-    edit.extend_line_end()
-    edit.copy()
-
-cut line:
-    edit.line_start()
-    edit.extend_line_end()
-    edit.cut()
-
 # deleting
 boom line:
     edit.delete_line()
@@ -57,6 +46,10 @@ fate <user.text>:
     insert(user.text)
     key(enter)
 
+change <user.text>:
+    edit.delete_word()
+    insert(user.text)
+
 # specific comma entries
 trash:
     ','
@@ -67,3 +60,7 @@ llama:
     key(left)
     ','
     key(enter)
+
+next:
+    ','
+    key(right)

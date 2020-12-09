@@ -9,3 +9,4 @@ conda install: 'conda install'
 # editing
 copy: edit.copy()
 paste: edit.paste()
+cut: edit.cut()

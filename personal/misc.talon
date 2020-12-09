@@ -12,3 +12,8 @@ access:
 sure <user.text>:
   insert(text)
   key(enter)
+
+# terminal
+jupiter lab:
+  "jupyter lab"
+  key(enter)

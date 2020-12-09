@@ -7,3 +7,9 @@ mail: key(alt-5)
 code: key(alt-6)
 write: key(alt-7)
 notes: key(alt-8)
+
+# window management
+large: key(ctrl-alt-enter)
+
+# finder
+open: key(cmd-down)

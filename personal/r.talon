@@ -1,4 +1,4 @@
-part <user.text>:
+meter <user.text>:
     insert(text)
     insert(" = ")
 

@@ -162,6 +162,8 @@ ctx.lists["user.code_functions"] = {
     "render ui": "renderUI",
     "observe event": "observeEvent",
     # Base
+    # Extra, to add to knausj
+    "is integer": "is.integer",
 }
 
 ctx.lists["user.code_libraries"] = {

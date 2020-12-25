@@ -62,5 +62,4 @@ llama:
     key(enter)
 
 next:
-    ','
-    key(right)
+    ', '

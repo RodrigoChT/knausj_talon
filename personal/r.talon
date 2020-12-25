@@ -5,9 +5,9 @@ meter <user.text>:
 deploy:
     key(cmd-shift-enter)
 
-from <user.text>:
-    insert(user.formatted_text(user.text, "SNAKE_CASE"))
-    insert("$")
+#from <user.text>:
+#    insert(user.formatted_text(user.text, "SNAKE_CASE"))
+#    insert("$")
 
 mint <user.text>:
     insert("# ")

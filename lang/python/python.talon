@@ -127,3 +127,6 @@ toggle imports: user.code_toggle_libraries()
 import <user.code_libraries>:
     user.code_insert_library(code_libraries, "")
     key(end enter)
+from <user.code_libraries>:
+    insert(code_libraries) 
+    insert(".")

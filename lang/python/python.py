@@ -20,6 +20,18 @@ ctx.lists["user.code_functions"] = {
     "split": "split",
     "string": "str",
     "update": "update",
+    "format": "format",
+    "input": "input",
+    # random library
+    "random integer": "randint",
+}
+
+ctx.lists["user.code_libraries"] = {
+    "random": "random",
+    "num pie": "numpy", 
+    "pandas": "pandas",
+    "oh s": "os",
+    "s kay learn": "sklearn",
 }
 
 """a set of fields used in python docstrings that will follow the
@@ -168,6 +180,11 @@ class user_actions:
         actions.user.paste(result)
         actions.edit.left()
         actions.edit.left()
+    
+    def code_insert_library(text: str, selection: str):
+        actions.insert("import ")
+        actions.clip.set_text(text + "{}".format(selection))
+        actions.edit.paste()
 
 
 @mod.action_class
